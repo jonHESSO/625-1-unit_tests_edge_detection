@@ -40,18 +40,21 @@ namespace ImageEdgeDetectionTest
 
         public bool CompareBitmaps(Bitmap bmp1, Bitmap bmp2)
         {
-            ImageConverter converter = new ImageConverter();
-            byte[] byte1 = converter.ConvertTo(bmp1, typeof(byte[])) as byte[];
-            byte[] byte2 = converter.ConvertTo(bmp2, typeof(byte[])) as byte[];
 
-            //MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            
-            if (byte1.Equals(byte2))
+            if (bmp1.Size.Height != bmp2.Size.Height || bmp1.Size.Width != bmp2.Size.Width) { return false; }
+
+            for (int i = 0; i < bmp1.Size.Height; i++)
             {
-                return true;
+                for (int j = 0; j < bmp1.Size.Width; j++)
+                {
+                    if (!bmp1.GetPixel(j, i).Equals(bmp2.GetPixel(j, i)))
+                    {
+                        return false;
+                    }
+                }
             }
 
-            return false;
+            return true;
         }
     }
 }
