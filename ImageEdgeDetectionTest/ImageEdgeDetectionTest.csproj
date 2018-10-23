@@ -62,7 +62,6 @@
       <Name>ImageEdgeDetection</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="data\edged middle kirsch.png" />
     <Content Include="data\edged middle laplacian 5x5.png" />
